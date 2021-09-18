@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 65
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 27b0d9f8bb3ae453da338c43c8a010c5, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d92bb320172ba430abc4f417dc39f7a8, type: 3}
+  - {fileID: 21300000, guid: a8498a049ed674db7bb5a993b4ce373f, type: 3}
+  - {fileID: 21300000, guid: ae4f8a14a85c14706bbf3d2059a2d62b, type: 3}
+  - {fileID: 21300000, guid: 4b1252d42ed8e4308af433e7697ccfbd, type: 3}
+  - {fileID: 21300000, guid: b0acc8e56cad04e7682ed6033e8fe5ad, type: 3}
+  - {fileID: 21300000, guid: a6af5d266aebc4833b9e88080fbf23b2, type: 3}
+  - {fileID: 21300000, guid: 41887966d85944f83a3596d9ca53576d, type: 3}
+  - {fileID: 21300000, guid: 800583866f994419ebdd7538465e5278, type: 3}
+  - {fileID: 21300000, guid: 26341669942fa4eecad4314729898477, type: 3}
+  - {fileID: 21300000, guid: 5ca7277a91ad5461a90fe517a5309880, type: 3}
+  - {fileID: 21300000, guid: 27edb7cab90594839bf6282e750c9c43, type: 3}
+  - {fileID: 21300000, guid: 1f7a784b771f2464cb164a67835ccef7, type: 3}
+  - {fileID: 21300000, guid: e9e984abc8d5d44d4abe933695b91a69, type: 3}
+  - {fileID: 21300000, guid: 10860a1dfecc14c56a798c3d0771a281, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - fruit_1
+  - fruit_0
+  - fruit_wrong_0
+  - fruit_2
+  - fruit_3
+  - basket
+  - move_button
+  - score_back
+  - pause_button
+  - main_logo
+  - sub_logo
+  - play_button
+  - back_alert
+  - bear
+  m_RenderDataMap: {}
+  m_Tag: Atlas
+  m_IsVariant: 0
