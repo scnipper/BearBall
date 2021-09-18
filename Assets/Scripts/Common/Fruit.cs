@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,7 +8,11 @@ namespace Common
     {
         public Sprite[] fruits;
         public Sprite[] wrongFruits;
+
+        public event Action<bool> onGoal;
+        
         private Rigidbody2D rbFruit;
+        private bool isWrong;
 
         private void Start()
         {
@@ -16,7 +21,7 @@ namespace Common
 
             if (Random.value > 0.8f)
             {
-                IsWrong = true;
+                isWrong = true;
                 spriteRenderer.sprite = wrongFruits[Random.Range(0, wrongFruits.Length)];
             }
             else
@@ -27,10 +32,27 @@ namespace Common
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            rbFruit.AddForce(new Vector2(1.5f,10),ForceMode2D.Impulse);
-            print(other.collider.name);
+            var identificator = other.collider.GetComponent<ColliderIdentificator>();
+            
+            if (identificator != null)
+            {
+                switch (identificator.type)
+                {
+                    case ColliderIdentificator.TypeCollides.Bear:
+                        rbFruit.AddForce(new Vector2(IsRight ? -1.5f : 1.5f,10),ForceMode2D.Impulse);
+                        break;
+                    case ColliderIdentificator.TypeCollides.Basket:
+                        Destroy(gameObject);
+                        onGoal?.Invoke(isWrong);
+                        break;
+                    case ColliderIdentificator.TypeCollides.Ground:
+                        Destroy(gameObject);
+                        onGoal?.Invoke(!isWrong);
+                        break;
+                }
+            }
         }
 
-        public bool IsWrong { get; set; }
+        public bool IsRight { get; set; }
     }
 }

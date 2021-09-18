@@ -20,7 +20,9 @@ namespace Common.Scenes
         {
             while (true)
             {
-                Instantiate(fruit, new Vector3(Random.Range(minX,maxX),10,0), Quaternion.identity, parent);
+                float xPos = Random.Range(minX,maxX);
+                var fruitInst = Instantiate(fruit, new Vector3(xPos,10,0), Quaternion.identity, parent);
+                fruitInst.IsRight = xPos > 0;
                 yield return new WaitForSeconds(Random.Range(1.5f, 3f));
             }
         }
