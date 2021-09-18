@@ -395,6 +395,8 @@ MonoBehaviour:
   fruit: {fileID: 6689494729389585151, guid: 208c5d522c6ce4f0eadcafa66c435e9e, type: 3}
   minX: -7
   maxX: 7
+  startScore: 10
+  scoreText: {fileID: 2114697370}
 --- !u!1 &451963462
 GameObject:
   m_ObjectHideFlags: 0
