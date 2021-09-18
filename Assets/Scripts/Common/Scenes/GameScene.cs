@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Util;
 
 namespace Common.Scenes
 {
@@ -12,6 +13,8 @@ namespace Common.Scenes
         public int startScore = 10;
         public Text scoreText;
         private Transform parent;
+
+        public GameObject pauseScreen;
 
 
         private int scoreLeft;
@@ -44,6 +47,13 @@ namespace Common.Scenes
             }
         }
 
+        public void PauseGame(bool isPause)
+        {
+            P.isPauseGame = isPause;
+            pauseScreen.SetActive(isPause);
+            Time.timeScale = isPause ? 0 : 1;
+        }
+        
         private void OnGoalFruit(bool isWrong)
         {
             if (isWrong)

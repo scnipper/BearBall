@@ -63,9 +63,11 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: d92bb320172ba430abc4f417dc39f7a8, type: 3}
+  - {fileID: 21300000, guid: adf0bee1993834653ba72120fa294bad, type: 3}
   - {fileID: 21300000, guid: a8498a049ed674db7bb5a993b4ce373f, type: 3}
   - {fileID: 21300000, guid: ae4f8a14a85c14706bbf3d2059a2d62b, type: 3}
   - {fileID: 21300000, guid: 4b1252d42ed8e4308af433e7697ccfbd, type: 3}
+  - {fileID: 21300000, guid: 8bfc9295f13884ad9854753c6f57bf82, type: 3}
   - {fileID: 21300000, guid: c19a6aa5c2d0b4a71851506f6a4a249f, type: 3}
   - {fileID: 21300000, guid: b0acc8e56cad04e7682ed6033e8fe5ad, type: 3}
   - {fileID: 21300000, guid: a6af5d266aebc4833b9e88080fbf23b2, type: 3}
@@ -79,9 +81,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 10860a1dfecc14c56a798c3d0771a281, type: 3}
   m_PackedSpriteNamesToIndex:
   - fruit_1
+  - next_button
   - fruit_0
   - fruit_wrong_0
   - fruit_2
+  - exit_button
   - speed_x1
   - fruit_3
   - basket

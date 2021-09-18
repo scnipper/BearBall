@@ -1,4 +1,5 @@
 using UnityEngine;
+using Util;
 
 namespace Common
 {
@@ -18,6 +19,8 @@ namespace Common
         }
         private void OnMouseDown()
         {
+            if(P.isPauseGame) return;
+            
             var mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
             offsetX = trBear.position.x - mousePos.x;
@@ -25,6 +28,9 @@ namespace Common
 
         private void OnMouseDrag()
         {
+            if(P.isPauseGame) return;
+            
+            
             var mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
             mousePos.x += offsetX;
