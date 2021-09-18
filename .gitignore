@@ -1,0 +1,46 @@
+/.idea/
+/obj/
+/Library/
+/Temp/
+/Build/
+/Assets/StreamingAssets/
+/Logs/
+/UserSettings/
+/Assets/StreamingAssets.meta
+/Assets/Editor/editor_config.json
+/Assets/Editor/editor_config.json.meta
+
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+obj/
+*.svd
+*.bundle
+*.userprefs
+/*.csproj
+*.pidb
+*.suo
+/*.sln
+*.user
+*.unityproj
+*.booproj
+/GameTemp/
+/AssetBundles/
+/Assets/Plugins/Android/Firebase/res/values/crashlytics_build_id.xml
+/Assets/Plugins/Android/Firebase/res/values/crashlytics_build_id.xml.meta
+/MemoryCaptures/
+Assets/Resources/_SQBAEnycryptFiles
+Assets/Resources/_SQBAEnycryptFiles.meta
