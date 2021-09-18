@@ -27,6 +27,7 @@ namespace Common.Scenes
         private int scoreRight;
         private bool isFruitAdded;
         private readonly List<Fruit> fruits = new List<Fruit>();
+        private bool isEndGame;
 
         private void Start()
         {
@@ -55,20 +56,26 @@ namespace Common.Scenes
 
         public void PlayGame()
         {
+            isEndGame = false;
             mainScreen.SetActive(false);
             playScreen.SetActive(true);
             playObjects.SetActive(true);
-            
-            scoreLeft = startScore;
-            scoreRight = startScore;
-            UpdateScoreView();
+
+            InitScore();
             
             StartCoroutine(FruitCreator());
         }
 
+        private void InitScore()
+        {
+            scoreLeft = startScore;
+            scoreRight = startScore;
+            UpdateScoreView();
+        }
 
         public void ExitGame()
         {
+            isEndGame = false;
             PauseGame(false);
             isFruitAdded = false;
             mainScreen.SetActive(true);
@@ -85,6 +92,11 @@ namespace Common.Scenes
         }
         public void PauseGame(bool isPause)
         {
+            if (!isPause && isEndGame)
+            {
+                InitScore();
+                isEndGame = false;
+            }
             P.isPauseGame = isPause;
             pauseScreen.SetActive(isPause);
             Time.timeScale = isPause ? 0 : 1;
@@ -95,9 +107,19 @@ namespace Common.Scenes
             if (isWrong)
             {
                 scoreLeft--;
-                if (scoreLeft < 0) scoreLeft = 0;
+                if (scoreLeft <= 0)
+                {
+                    GameOver();
+                    scoreLeft = 0;
+                }
                 UpdateScoreView();
             }
+        }
+
+        private void GameOver()
+        {
+            PauseGame(true);
+            isEndGame = true;
         }
     }
 }
