@@ -39,7 +39,8 @@ namespace Common
                 switch (identificator.type)
                 {
                     case ColliderIdentificator.TypeCollides.Bear:
-                        rbFruit.AddForce(new Vector2(IsRight ? -1.5f : 1.5f,10),ForceMode2D.Impulse);
+                        float force = 1.5f + Random.Range(-0.2f, 1f);
+                        rbFruit.AddForce(new Vector2(IsRight ? -force : force,10),ForceMode2D.Impulse);
                         break;
                     case ColliderIdentificator.TypeCollides.Basket:
                         Destroy(gameObject);
