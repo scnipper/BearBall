@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -52,6 +53,11 @@ namespace Common
                         
                         break;
                     case ColliderIdentificator.TypeCollides.Basket:
+                        var trBasket = other.transform;
+                        var posBasket = trBasket.position;
+                        trBasket.DOMove(new Vector3(posBasket.x - 0.2f, posBasket.y, 0), 0.04f)
+                            .SetLoops(4,LoopType.Yoyo)
+                            .SetEase(Ease.Linear);
                         Destroy(gameObject);
                         onGoal?.Invoke(isWrong);
                         break;
