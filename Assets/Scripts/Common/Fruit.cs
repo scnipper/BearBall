@@ -46,8 +46,8 @@ namespace Common
                         }
                         else
                         {
-                            float force = 1.5f + Random.Range(-0.2f, 1f);
-                            rbFruit.AddForce(new Vector2(IsRight ? -force : force,10),ForceMode2D.Impulse);
+                            float force = 4.5F + Random.Range(-0.4f, 1f);
+                            rbFruit.AddForce(new Vector2(IsRight ? -force : force,15),ForceMode2D.Impulse);
                         }
                         
                         break;

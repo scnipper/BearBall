@@ -411,6 +411,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 17c6521f351a340cb97d55637eae4b70, type: 3}
+    - target: {fileID: 2683413758394023508, guid: e24a3f85428484d9c91295f20c449e62, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4220597310028324942, guid: e24a3f85428484d9c91295f20c449e62, type: 3}
       propertyPath: m_Name
       value: bear2
@@ -3900,6 +3904,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 17c6521f351a340cb97d55637eae4b70, type: 3}
+    - target: {fileID: 2683413758394023508, guid: e24a3f85428484d9c91295f20c449e62, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4220597310028324942, guid: e24a3f85428484d9c91295f20c449e62, type: 3}
       propertyPath: m_Name
       value: bear2
