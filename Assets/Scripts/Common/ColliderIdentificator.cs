@@ -12,5 +12,6 @@ namespace Common
         }
 
         public TypeCollides type;
+        public int id;
     }
 }

@@ -10,10 +10,11 @@ namespace Common
         public Sprite[] fruits;
         public Sprite[] wrongFruits;
 
-        public event Action<bool> onGoal;
+        public event Action<bool,int> onGoal;
         
         private Rigidbody2D rbFruit;
         private bool isWrong;
+        private int lastIdBear;
 
         private void Start()
         {
@@ -40,9 +41,10 @@ namespace Common
                 switch (identificator.type)
                 {
                     case ColliderIdentificator.TypeCollides.Bear:
+                        lastIdBear = identificator.id;
                         if (IsDestroyAfterBearCollide)
                         {
-                            onGoal?.Invoke(isWrong);
+                            onGoal?.Invoke(isWrong,lastIdBear);
                             Destroy(gameObject);
                         }
                         else
@@ -59,11 +61,11 @@ namespace Common
                             .SetLoops(4,LoopType.Yoyo)
                             .SetEase(Ease.Linear);
                         Destroy(gameObject);
-                        onGoal?.Invoke(isWrong);
+                        onGoal?.Invoke(isWrong,lastIdBear);
                         break;
                     case ColliderIdentificator.TypeCollides.Ground:
                         Destroy(gameObject);
-                        onGoal?.Invoke(!isWrong);
+                        onGoal?.Invoke(!isWrong,lastIdBear);
                         break;
                 }
             }

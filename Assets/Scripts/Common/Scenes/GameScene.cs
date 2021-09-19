@@ -21,6 +21,12 @@ namespace Common.Scenes
         public GameObject mainScreen;
         public GameObject playModeBasket;
         public GameObject playModeFalling;
+
+        [Header("Bears")]
+        public Bear bear1;
+        public Bear bear2;
+        public Bear bear1Falling;
+        public Bear bear2Falling;
         
 
 
@@ -83,6 +89,10 @@ namespace Common.Scenes
         }
         private void InitScore()
         {
+            bear1.gameObject.SetActive(true);
+            bear1Falling.gameObject.SetActive(true);
+            bear2.gameObject.SetActive(true);
+            bear2Falling.gameObject.SetActive(true);
             scoreLeft = startScore;
             scoreRight = startScore;
             UpdateScoreView();
@@ -117,18 +127,51 @@ namespace Common.Scenes
             Time.timeScale = isPause ? 0 : 1;
         }
         
-        private void OnGoalFruit(bool isWrong)
+        private void OnGoalFruit(bool isWrong,int idBear)
         {
-            if (isWrong)
+            if (currentGameMode == GameMode.Basket)
             {
-                scoreLeft--;
-                if (scoreLeft <= 0)
+                if (isWrong)
                 {
-                    GameOver();
-                    scoreLeft = 0;
+                    WrongScore(idBear);
                 }
-                UpdateScoreView();
             }
+            else if(currentGameMode == GameMode.Falling)
+            {
+                if (!isWrong)
+                {
+                    WrongScore(idBear);
+                }
+            }
+        }
+
+        private void WrongScore(int idBear)
+        {
+            if(idBear == 1)
+                scoreLeft--;
+            if(idBear == 2)
+                scoreRight--;
+            if (scoreLeft <= 0)
+            {
+                bear1.gameObject.SetActive(false);
+                bear1Falling.gameObject.SetActive(false);
+                scoreLeft = 0;
+                if(currentGameMode == GameMode.Falling) GameOver();
+            }
+            else if(scoreRight <= 0)
+            {
+                bear2.gameObject.SetActive(false);
+                bear2Falling.gameObject.SetActive(false);
+                scoreRight = 0;
+                if(currentGameMode == GameMode.Falling) GameOver();
+
+            }
+                
+            if(scoreLeft <= 0 && scoreRight <= 0 && currentGameMode != GameMode.Falling)
+            {
+                GameOver();
+            }
+            UpdateScoreView();
         }
 
         private void GameOver()
