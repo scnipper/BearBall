@@ -15,6 +15,7 @@ namespace Common
         private Rigidbody2D rbFruit;
         private bool isWrong;
         private int lastIdBear;
+        private Bear lastBear;
 
         private void Start()
         {
@@ -42,8 +43,14 @@ namespace Common
                 {
                     case ColliderIdentificator.TypeCollides.Bear:
                         lastIdBear = identificator.id;
+                        lastBear = identificator.GetComponentInParent<Bear>();
+
                         if (IsDestroyAfterBearCollide)
                         {
+                            if (isWrong && lastBear != null)
+                            {
+                                lastBear.SlowEffect();
+                            }
                             onGoal?.Invoke(isWrong,lastIdBear);
                             Destroy(gameObject);
                         }
@@ -52,7 +59,6 @@ namespace Common
                             float force = 4.5F + Random.Range(-0.4f, 1f);
                             rbFruit.AddForce(new Vector2(IsRight ? -force : force,15),ForceMode2D.Impulse);
                         }
-                        
                         break;
                     case ColliderIdentificator.TypeCollides.Basket:
                         var trBasket = other.transform;
@@ -61,6 +67,10 @@ namespace Common
                             .SetLoops(4,LoopType.Yoyo)
                             .SetEase(Ease.Linear);
                         Destroy(gameObject);
+                        if (isWrong && lastBear != null)
+                        {
+                            lastBear.SlowEffect();
+                        }
                         onGoal?.Invoke(isWrong,lastIdBear);
                         break;
                     case ColliderIdentificator.TypeCollides.Ground:
