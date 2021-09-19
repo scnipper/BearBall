@@ -73,7 +73,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a6af5d266aebc4833b9e88080fbf23b2, type: 3}
   - {fileID: 21300000, guid: 41887966d85944f83a3596d9ca53576d, type: 3}
   - {fileID: 21300000, guid: 800583866f994419ebdd7538465e5278, type: 3}
+  - {fileID: 21300000, guid: c714cf376e22449c895211e10dfac210, type: 3}
+  - {fileID: 21300000, guid: 4d2d484813ce94977a3b7bf2e4a97549, type: 3}
   - {fileID: 21300000, guid: 26341669942fa4eecad4314729898477, type: 3}
+  - {fileID: 21300000, guid: 55609ff9ba6d64415be3ec649c8aeae6, type: 3}
   - {fileID: 21300000, guid: 5ca7277a91ad5461a90fe517a5309880, type: 3}
   - {fileID: 21300000, guid: 27edb7cab90594839bf6282e750c9c43, type: 3}
   - {fileID: 21300000, guid: 1f7a784b771f2464cb164a67835ccef7, type: 3}
@@ -93,7 +96,10 @@ SpriteAtlas:
   - basket
   - move_button
   - score_back
+  - traectory
+  - basket_mode_button
   - pause_button
+  - falling_mode_button
   - main_logo
   - sub_logo
   - play_button

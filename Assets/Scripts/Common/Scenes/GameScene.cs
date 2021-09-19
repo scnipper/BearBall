@@ -61,7 +61,6 @@ namespace Common.Scenes
         {
             currentGameMode = (GameMode) gameMode;
             isEndGame = false;
-            mainScreen.SetActive(false);
             playScreen.SetActive(true);
             EnableGameModeView((GameMode) gameMode,true);
 
