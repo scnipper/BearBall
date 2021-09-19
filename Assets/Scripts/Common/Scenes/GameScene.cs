@@ -127,10 +127,21 @@ namespace Common.Scenes
             Time.timeScale = isPause ? 0 : 1;
         }
         
-        private void OnGoalFruit(bool isWrong,int idBear)
+        private void OnGoalFruit(bool isWrong,int idBear,bool isClearWeight)
         {
             if (currentGameMode == GameMode.Basket)
             {
+                if (idBear == 1)
+                {
+                    bear1.UpdateBodyBear(isClearWeight);
+                    bear1Falling.UpdateBodyBear(isClearWeight);
+                }
+                if (idBear == 2)
+                {
+                    bear2.UpdateBodyBear(isClearWeight);
+                    bear2Falling.UpdateBodyBear(isClearWeight);
+                }
+
                 if (isWrong)
                 {
                     WrongScore(idBear);
@@ -140,6 +151,16 @@ namespace Common.Scenes
             {
                 if (!isWrong)
                 {
+                    if (idBear == 1)
+                    {
+                        bear1.UpdateBodyBear(isClearWeight);
+                        bear1Falling.UpdateBodyBear(isClearWeight);
+                    }
+                    if (idBear == 2)
+                    {
+                        bear2.UpdateBodyBear(isClearWeight);
+                        bear2Falling.UpdateBodyBear(isClearWeight);
+                    }
                     WrongScore(idBear);
                 }
             }

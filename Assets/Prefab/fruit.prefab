@@ -106,6 +106,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 01509aff5d9914ed398366b5b4f39dfe, type: 3}
   wrongFruits:
   - {fileID: 21300000, guid: ae4f8a14a85c14706bbf3d2059a2d62b, type: 3}
+  fruitIndexClearWeight: 4
 --- !u!61 &8759173872982608477
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -9,13 +9,15 @@ namespace Common
     {
         public Sprite[] fruits;
         public Sprite[] wrongFruits;
+        public int fruitIndexClearWeight;
 
-        public event Action<bool,int> onGoal;
+        public event Action<bool,int,bool> onGoal;
         
         private Rigidbody2D rbFruit;
         private bool isWrong;
         private int lastIdBear;
         private Bear lastBear;
+        private bool isClearWeightBear;
 
         private void Start()
         {
@@ -29,7 +31,9 @@ namespace Common
             }
             else
             {
-                spriteRenderer.sprite = fruits[Random.Range(0, fruits.Length)];
+                int fruitIndex = Random.Range(0, fruits.Length);
+                isClearWeightBear = fruitIndex == fruitIndexClearWeight;
+                spriteRenderer.sprite = fruits[fruitIndex];
             }
         }
 
@@ -51,7 +55,7 @@ namespace Common
                             {
                                 lastBear.SlowEffect();
                             }
-                            onGoal?.Invoke(isWrong,lastIdBear);
+                            onGoal?.Invoke(isWrong,lastIdBear,isClearWeightBear);
                             Destroy(gameObject);
                         }
                         else
@@ -71,11 +75,11 @@ namespace Common
                         {
                             lastBear.SlowEffect();
                         }
-                        onGoal?.Invoke(isWrong,lastIdBear);
+                        onGoal?.Invoke(isWrong,lastIdBear,isClearWeightBear);
                         break;
                     case ColliderIdentificator.TypeCollides.Ground:
                         Destroy(gameObject);
-                        onGoal?.Invoke(!isWrong,lastIdBear);
+                        onGoal?.Invoke(!isWrong,lastIdBear,isClearWeightBear);
                         break;
                 }
             }

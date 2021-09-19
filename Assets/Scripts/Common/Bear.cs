@@ -12,6 +12,7 @@ namespace Common
         public Rigidbody2D body;
         public SpriteRenderer moveButton;
         public Sprite slowSprite;
+        public Transform bearSprite;
         
         private Transform trBear;
         private Camera mainCamera;
@@ -20,6 +21,7 @@ namespace Common
         private bool isSlow;
         private Sprite moveButtonSprite;
         private float timeDurationSlow;
+        private int countUpdate;
 
         private void Awake()
         {
@@ -87,6 +89,13 @@ namespace Common
             }
         }
 
+        public void UpdateBodyBear(bool isClear)
+        {
+            if (isClear) countUpdate = 0;
+            else countUpdate++;
+            if (countUpdate > 5) countUpdate = 5;
+            bearSprite.localScale = new Vector3(1 + (0.4f * (countUpdate / 5.0f)), 1, 1);
+        }
         public void SlowEffect()
         {
             timeDurationSlow = 5;
