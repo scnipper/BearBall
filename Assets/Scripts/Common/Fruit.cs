@@ -39,8 +39,17 @@ namespace Common
                 switch (identificator.type)
                 {
                     case ColliderIdentificator.TypeCollides.Bear:
-                        float force = 1.5f + Random.Range(-0.2f, 1f);
-                        rbFruit.AddForce(new Vector2(IsRight ? -force : force,10),ForceMode2D.Impulse);
+                        if (IsDestroyAfterBearCollide)
+                        {
+                            onGoal?.Invoke(isWrong);
+                            Destroy(gameObject);
+                        }
+                        else
+                        {
+                            float force = 1.5f + Random.Range(-0.2f, 1f);
+                            rbFruit.AddForce(new Vector2(IsRight ? -force : force,10),ForceMode2D.Impulse);
+                        }
+                        
                         break;
                     case ColliderIdentificator.TypeCollides.Basket:
                         Destroy(gameObject);
@@ -54,6 +63,7 @@ namespace Common
             }
         }
 
+        public bool IsDestroyAfterBearCollide { get; set; }
         public bool IsRight { get; set; }
     }
 }

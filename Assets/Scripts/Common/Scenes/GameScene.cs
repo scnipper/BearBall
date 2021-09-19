@@ -19,7 +19,8 @@ namespace Common.Scenes
         public GameObject pauseScreen;
         public GameObject playScreen;
         public GameObject mainScreen;
-        public GameObject playObjects;
+        public GameObject playModeBasket;
+        public GameObject playModeFalling;
         
 
 
@@ -28,6 +29,7 @@ namespace Common.Scenes
         private bool isFruitAdded;
         private readonly List<Fruit> fruits = new List<Fruit>();
         private bool isEndGame;
+        private GameMode currentGameMode;
 
         private void Start()
         {
@@ -39,7 +41,7 @@ namespace Common.Scenes
             scoreText.text = $"{scoreLeft} : {scoreRight}";
         }
 
-        private IEnumerator FruitCreator()
+        private IEnumerator FruitCreator(GameMode gameMode)
         {
             fruits.Clear();
             isFruitAdded = true;
@@ -49,23 +51,37 @@ namespace Common.Scenes
                 var fruitInst = Instantiate(fruit, new Vector3(xPos,10,0), Quaternion.identity, parent);
                 fruitInst.IsRight = xPos > 0;
                 fruitInst.onGoal += OnGoalFruit;
+                fruitInst.IsDestroyAfterBearCollide = gameMode == GameMode.Falling;
                 fruits.Add(fruitInst);
                 yield return new WaitForSeconds(Random.Range(1.5f, 3f));
             }
         }
 
-        public void PlayGame()
+        public void PlayGame(int gameMode)
         {
+            currentGameMode = (GameMode) gameMode;
             isEndGame = false;
             mainScreen.SetActive(false);
             playScreen.SetActive(true);
-            playObjects.SetActive(true);
+            EnableGameModeView((GameMode) gameMode,true);
 
             InitScore();
             
-            StartCoroutine(FruitCreator());
+            StartCoroutine(FruitCreator((GameMode) gameMode));
         }
 
+        private void EnableGameModeView(GameMode gameMode, bool isEnable)
+        {
+            switch (gameMode)
+            {
+                case GameMode.Basket:
+                    playModeBasket.SetActive(isEnable);
+                    break;
+                case GameMode.Falling:
+                    playModeFalling.SetActive(isEnable);
+                    break;
+            }
+        }
         private void InitScore()
         {
             scoreLeft = startScore;
@@ -80,7 +96,7 @@ namespace Common.Scenes
             isFruitAdded = false;
             mainScreen.SetActive(true);
             playScreen.SetActive(false);
-            playObjects.SetActive(false);
+            EnableGameModeView(currentGameMode,false);
             
             foreach (var fr in fruits)
             {
