@@ -2,10 +2,11 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using Util;
+using Util.Touch.Impl;
 
 namespace Common
 {
-    public class Bear : MonoBehaviour
+    public class Bear : MonoBehaviour,ITouchListener
     {
         public float minX = -9;
         public float maxX = 9;
@@ -32,33 +33,9 @@ namespace Common
             bodyInst.position = trBear.position;
             Destroy(body.gameObject);
         }
-        private void OnMouseDown()
-        {
-            if(P.isPauseGame) return;
-            
-            var mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-            offsetX = trBear.position.x - mousePos.x;
-        }
 
-        private void OnMouseDrag()
-        {
-            if(P.isPauseGame) return;
-            
-            
-            var mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-            mousePos.x += offsetX;
-            mousePos.z = 0;
-            var trBearPosition = trBear.position;
-
-            mousePos.y = trBearPosition.y;
-            
-            mousePos = ClampPosition(mousePos);
-            
-            bodyInst.MovePosition(mousePos);
-
-        }
 
         private void OnEnable()
         {
@@ -108,6 +85,37 @@ namespace Common
             if (mousePos.x < minX) mousePos.x = minX;
             if (mousePos.x > maxX) mousePos.x = maxX;
             return mousePos;
+        }
+
+        public void OnTouchDown(int indexTouch)
+        {
+            if(P.isPauseGame) return;
+            
+            var mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+            offsetX = trBear.position.x - mousePos.x;
+        }
+
+        public void OnTouchUp(int indexTouch)
+        {
+        }
+
+        public void OnTouchDrag(int indexTouch)
+        {
+            if(P.isPauseGame) return;
+            
+            
+            var mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+            mousePos.x += offsetX;
+            mousePos.z = 0;
+            var trBearPosition = trBear.position;
+
+            mousePos.y = trBearPosition.y;
+            
+            mousePos = ClampPosition(mousePos);
+            
+            bodyInst.MovePosition(mousePos);
         }
     }
 }
